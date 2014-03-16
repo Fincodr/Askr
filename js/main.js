@@ -467,6 +467,7 @@ var App = {
   num: 0,
   total: 0,
   last: null,
+  qpp: 5,
   stats: {
     correct: 0,
     wrong: 0
@@ -571,7 +572,7 @@ var App = {
                 word = w2[0].trim();
                 if (!_.contains(this.a, word)) {
                   this.a.push(word);
-                  if (this.a.length===4) {
+                  if (this.a.length===this.qpp) {
                     break;
                   }
                 }
@@ -579,7 +580,7 @@ var App = {
             }
           }
         }
-        if (this.a.length<4) {
+        if (this.a.length<this.qpp) {
           // fill with random words
           do {
             var r = _.random(0, this.db.length-1);
@@ -592,7 +593,7 @@ var App = {
             if (!_.contains(this.a, word)) {
               this.a.push(word);
             }
-          } while (this.a.length<4);
+          } while (this.a.length<this.qpp);
         }
         this.a = _.shuffle(this.a);
       } else {
@@ -618,31 +619,28 @@ var App = {
     console.log('A3:', this.a[2]);
     console.log('A4:', this.a[3]);
     */
+    var i;
     $('#Q').text(this.q[0]);
     if (this.a[0].length===0) {
-      $('#A1').hide();
-      $('#A2').hide();
-      $('#A3').hide();
-      $('#A4').hide();
-      $('#skip').text('restart');
+      for (i=0; i!=this.qpp; ++i) {
+        $('#A'+(i+1)).hide();
+      }
+      $('#skip').text('< restart >');
     } else {
-      $('#A1').text(this.a[0]);
-      $('#A2').text(this.a[1]);
-      $('#A3').text(this.a[2]);
-      $('#A4').text(this.a[3]);
-      $('#A1').show();
-      $('#A2').show();
-      $('#A3').show();
-      $('#A4').show();
-      $('#skip').text('next');
+      for (i=0; i!=this.qpp; ++i) {
+        $('#A'+(i+1)).text(this.a[i]);
+        $('#A'+(i+1)).show();
+      }
+      $('#skip').text('< skip >');
     }
     $('#status').text(this.title + ', ' + this.dbname + ': [ ' + this.num + ' / ' + this.total + ' ] - Correct: ' + this.stats.correct + ' (' + ((this.stats.correct/this.total)*100).toFixed(0) + '%) - Wrong: ' + this.stats.wrong);
   },
 
   _answer: function(choice) {
     var _this = this;
+    console.log(choice);
     if (choice===0) {
-      if ($('#skip').text() !== 'next') {
+      if ($('#skip').text() !== '< skip >') {
         this.init();
       } else {
         // skip, add currect question one times back to the index
@@ -687,7 +685,7 @@ var App = {
         // wrong answer
         this.stats.wrong++;
         var correct = -1;
-        for (var i=0; i<4; ++i) {
+        for (var i=0; i<this.qpp; ++i) {
           if (this.a[i]===a[0].trim()) {
             correct = i+1;
             break;
@@ -742,21 +740,15 @@ var App = {
       _this._answer(0);
     });
 
-    $('#A1').click(function(){
-      _this._answer(1);
-    });
+    function createCallback(i) {
+      return function(){
+        _this._answer(i);
+      }
+    }
 
-    $('#A2').click(function(){
-      _this._answer(2);
-    });
-
-    $('#A3').click(function(){
-      _this._answer(3);
-    });
-
-    $('#A4').click(function(){
-      _this._answer(4);
-    });
+    for (var i=0; i!=this.qpp; ++i) {
+      $('#A'+(i+1)).click( createCallback(i+1) );
+    }
   },
 
   init: function(){
