@@ -32,7 +32,8 @@ var App = {
     // global variables
     'numbers': {
       words: [
-        { se:'en, ett', i:'', fi:'yksi' },
+        { se:'en', i:'', fi:'yksi' },
+        { se:'ett', i:'', fi:'yksi' },
         { se:'två', i:'', fi:'kaksi' },
         { se:'tre', i:'', fi:'kolme' },
         { se:'fyra', i:'', fi:'neljä' },
@@ -49,10 +50,12 @@ var App = {
         { se:'femton', i:'', fi:'viisitoista' },
         { se:'sexton', i:'', fi:'kuusitoista' },
         { se:'sjutton', i:'', fi:'seitsemäntoista' },
-        { se:'arton (aderton)', i:'', fi:'kahdeksantoista' },
+        { se:'arton', i:'', fi:'kahdeksantoista' },
+        { se:'aderton', i:'(vanh.)', fi:'kahdeksantoista' },
         { se:'nitton', i:'', fi:'yhdeksäntoista' },
         { se:'tjugo', i:'', fi:'kaksikymmentä' },
-        { se:'tjugoen, tjugoett', i:'', fi:'kaksikymmentäyksi' },
+        { se:'tjugoen', i:'', fi:'kaksikymmentäyksi' },
+        { se:'tjugoett', i:'', fi:'kaksikymmentäyksi' },
         { se:'tjugotvå', i:'', fi:'kaksikymmentäkaksi' },
         { se:'trettio', i:'', fi:'kolmekymmentä' },
         { se:'fyrtio', i:'', fi:'neljäkymmentä' },
@@ -594,7 +597,7 @@ var App = {
         this.a = _.shuffle(this.a);
       } else {
         // show end results
-        this.q.push('Your results were ...');
+        this.q.push('Correct: ' + ((this.stats.correct/this.total)*100).toFixed(0) + '%');
         this.a.push('');
         this.a.push('');
         this.a.push('');
@@ -679,7 +682,7 @@ var App = {
           $('#A'+choice).addClass("btn-default");
           _this._next();
           _this._show();
-        }, 1000);
+        }, 500);
       } else {
         // wrong answer
         this.stats.wrong++;
