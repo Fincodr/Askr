@@ -630,6 +630,7 @@ var App = {
       for (i=0; i!=this.qpp; ++i) {
         $('#A'+(i+1)).text(this.a[i]);
         $('#A'+(i+1)).show();
+        $('#answers').css('visibility', 'hidden');
       }
       $('#skip').text('< skip >');
     }
@@ -738,6 +739,10 @@ var App = {
       if (newHash && this.dbname!==newHash) {
         _this.init();
       }
+    });
+
+    $("#content").click(function() {
+      $("#answers").css("visibility", "visible");
     });
 
     $('#skip').click(function(){
