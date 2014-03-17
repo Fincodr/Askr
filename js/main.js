@@ -728,6 +728,10 @@ var App = {
   setup: function(){
     var _this = this;
 
+    $(window).on('load', function() {
+      FastClick.attach(document.body);
+    });
+
     $(window).on('hashchange', function() {
       // do we have a new hash?
       var newHash = window.location.hash.substring(1);
@@ -743,7 +747,7 @@ var App = {
     function createCallback(i) {
       return function(){
         _this._answer(i);
-      }
+      };
     }
 
     for (var i=0; i!=this.qpp; ++i) {
