@@ -729,7 +729,7 @@ var App = {
   setup: function(){
     var _this = this;
 
-    $(window).on('load', function() {
+    $(function() {
       FastClick.attach(document.body);
     });
 
