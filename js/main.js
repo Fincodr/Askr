@@ -474,7 +474,6 @@ var App = {
         { se:'konstruera', i:'(en)', fi:'suunnitella' },
         { se:'krav', i:'(ett)', fi:'vaatimus' },
         { se:'kvalitet', i:'(en)', fi:'laatu' },
-        { se:'lösa', i:'', fi:'ratkaista' },
         { se:'lösning', i:'(en)', fi:'ratkaisu' },
         { se:'mjukvara', i:'(en)', fi:'ohjelmisto' },
         { se:'mjukvarusida', i:'', fi:'ohjelmistopuoli' },
@@ -518,7 +517,7 @@ var App = {
       }
     }
   },
-  dbname: 'T1',
+  dbname: 'T2',
   order: 'linear',
   title: 'Swedish',
   db: [],
