@@ -16,6 +16,7 @@ body {
 .header {
   border-bottom: 1px solid #e5e5e5;
 }
+
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   padding-bottom: 19px;
@@ -29,6 +30,26 @@ body {
   padding-top: 5px;
   color: #777;
   border-top: 1px solid #e5e5e5;
+}
+
+h1 span.w1:before {
+  color: #88d;
+  content:'|';
+}
+
+h1 span.w2 {
+  color: #88d;
+  content:'|';
+}
+
+a span.w1:before {
+  color: #88d;
+  content:'|';
+}
+
+a span.w2 {
+  color: #88d;
+  content:'|';
 }
 
 /* Customize container */

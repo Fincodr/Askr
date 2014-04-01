@@ -609,7 +609,7 @@ var App = {
       }
     }
   },
-  dbname: 'T2',
+  dbname: 'T3',
   order: 'linear',
   title: 'Swedish',
   db: [],
@@ -774,7 +774,7 @@ var App = {
     console.log('A4:', this.a[3]);
     */
     var i;
-    $('#Q').text(this.q[0]);
+    $('#Q').html(this._toHTML(this.q[0]));
     if (this.a[0].length===0) {
       for (i=0; i!=this.qpp; ++i) {
         $('#A'+(i+1)).hide();
@@ -782,13 +782,20 @@ var App = {
       $('#skip').text('< restart >');
     } else {
       for (i=0; i!=this.qpp; ++i) {
-        $('#A'+(i+1)).text(this.a[i]);
+        $('#A'+(i+1)).html(this._toHTML(this.a[i])); //.text(this.a[i].replace(/=/g, '')); //
         $('#A'+(i+1)).show();
         $('#answers').css('visibility', 'hidden');
       }
       $('#skip').text('< skip >');
     }
     $('#status').text(this.title + ', ' + this.dbname + ': [ ' + this.num + ' / ' + this.total + ' ] - Correct: ' + this.stats.correct + ' (' + ((this.stats.correct/this.total)*100).toFixed(0) + '%) - Wrong: ' + this.stats.wrong);
+  },
+
+  _toHTML: function(text) {
+    var x = text.split('=');
+    var t = '';
+    _.forEach(x, function(v,i){ t+='<span class="w'+i+'">'+v+'</span>'; });
+    return t;
   },
 
   _answer: function(choice) {
