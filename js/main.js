@@ -506,6 +506,7 @@ var App = {
     },
     'T3': {
       words: [
+        /* Förmåner på jobbet */
         { se:'ackord=jobb', i:'', fi:'urakka=työ' },
         { se:'alternerings=ledighet', i:'', fi:'vuorottelu=vapaa' },
         { se:'anställa', i:'', fi:'palkata työhön' },
@@ -588,30 +589,65 @@ var App = {
         { se:'vikarie', i:'(en)', fi:'sijainen' },
         { se:'vuxen=utbildning', i:'', fi:'aikuis=koulutus' },
         { se:'yrkes=kunnighet', i:'', fi:'ammatti=taito' },
-        /* Hollywood */
-        { se:'sikta', i:'', fi:'tähdätä' },
-        { se:'nedladda', i:'', fi:'imuroida (atk)' },
-        { se:'inhemsk', i:'', fi:'kotimainen' },
-        { se:'överraska', i:'', fi:'yllättää' },
-        { se:'räcka', i:'', fi:'riittää' },
-        { se:'skapa', i:'', fi:'luoda' },
-        { se:'envist', i:'', fi:'itsepäisesti' },
-        { se:'kvar', i:'', fi:'jäljellä/tallella' },
-        { se:'sällsynt', i:'', fi:'harvinainen' },
-        { se:'modefluga', i:'', fi:'muotivillitys' },
-        { se:'ingångssida', i:'', fi:'aloitussivu' },
-        { se:'framgång', i:'', fi:'menestys' },
-        { se:'inneha', i:'', fi:'hallita/omistaa' },
-        { se:'ansvara för ngt', i:'', fi:'vastata jostakin' },
-        { se:'verksamhet', i:'', fi:'toiminta' },
-        { se:'plansch', i:'', fi:'kuvataulu' },
-        { se:'dyka upp', i:'', fi:'ilmaantua' },
-        { se:'finslipa', i:'', fi:'hioa/työstää' },
-        { se:'genomtänkt', i:'', fi:'huolellisesti harkittu' },
-        { se:'utseende', i:'', fi:'ulkonäkö' },
-        { se:'mullig', i:'', fi:'pyöreä' },
-        { se:'röjas', i:'', fi:'paljastua' },
-        { se:'slangbbella', i:'', fi:'ritsa' }
+        /* Arbetslivet */
+        { se:'börs=moppe', i:'(en)', fi:'pörssi=meklari' },
+        { se:'nummer=nisse', i:'(en)', fi:'numero=niilo' },
+        { se:'fattigdoms=fälla', i:'(en)', fi:'köyhyys=loukku' },
+        { se:'skuld=sanering', i:'', fi:'velka=saneeraus' },
+        { se:'framtids=utsikt', i:'', fi:'tulevaisuuden=näkymä' },
+        { se:'outsourca', i:'', fi:'ulkoistaa' },
+        { se:'under=leverantör', i:'', fi:'ali=hankkija' },
+        { se:'kostnads=skäl', i:'(av)', fi:'kustannus=syistä' },
+        { se:'engagera sig', i:'', fi:'sitoutua' },
+        { se:'kärnverk=samhet', i:'', fi:'ydin=toiminta' },
+        { se:'privata =hushåll', i:'', fi:'yksityis=taloudet' },
+        { se:'konsekvens', i:'', fi:'seuraus' },
+        { se:'bolagsman', i:'(en)', fi:'yhtiömies' },
+        { se:'ansvarig', i:'(en)', fi:'vastuullinen' },
+        { se:'tyst', i:'(en)', fi:'äänetön' },
+        { se:'kommandit=bolag', i:'(ett)', fi:'kommandiitti=yhtiö' },
+        { se:'aktie=bolag', i:'(ett)', fi:'osake=yhtiö' },
+        { se:'minimi=kapital', i:'(ett)', fi:'vähimmäis=pääoma' },
+        { se:'styrelse', i:'(en)', fi:'hallitus' },
+        { se:'bolags=stämma', i:'(en)', fi:'yhtiö=kokous' },
+        { se:'revisor', i:'(en)', fi:'tilitarkastaja' },
+        { se:'fusion', i:'(en)', fi:'fuusio' },
+        { se:'andelslag', i:'(ett)', fi:'osuuskunta' },
+        { se:'redovisning', i:'(en)', fi:'laskentatoimi' },
+        { se:'bokslut', i:'(ett)', fi:'tilinpäätös' },
+        { se:'bokföring', i:'', fi:'kirjanpito' },
+        { se:'konkurs', i:'(en)', fi:'konkurssi' },
+        { se:'internationalisering', i:'', fi:'kansainvälistyinen' },
+        { se:'marknadsnisch', i:'', fi:'markkinarako' },
+        { se:'stärka positionerna', i:'', fi:'vahvistaa asemiaan' },
+        { se:'vist', i:'(en)', fi:'voitto' },
+        { se:'vidareförädla', i:'', fi:'jatkojalostaa' },
+        { se:'friktionsfri', i:'', fi:'kitkaton' },
+        { se:'inhyrd personal', i:'', fi:'vuokratyövoima' },
+        /* Hollywood (se->fi only) */
+        { oneway: true, se:'sikta', i:'', fi:'tähdätä' },
+        { oneway: true, se:'nedladda', i:'', fi:'imuroida (atk)' },
+        { oneway: true, se:'inhemsk', i:'', fi:'kotimainen' },
+        { oneway: true, se:'överraska', i:'', fi:'yllättää' },
+        { oneway: true, se:'räcka', i:'', fi:'riittää' },
+        { oneway: true, se:'skapa', i:'', fi:'luoda' },
+        { oneway: true, se:'envist', i:'', fi:'itsepäisesti' },
+        { oneway: true, se:'kvar', i:'', fi:'jäljellä/tallella' },
+        { oneway: true, se:'sällsynt', i:'', fi:'harvinainen' },
+        { oneway: true, se:'modefluga', i:'', fi:'muotivillitys' },
+        { oneway: true, se:'ingångssida', i:'', fi:'aloitussivu' },
+        { oneway: true, se:'framgång', i:'', fi:'menestys' },
+        { oneway: true, se:'inneha', i:'', fi:'hallita/omistaa' },
+        { oneway: true, se:'ansvara för ngt', i:'', fi:'vastata jostakin' },
+        { oneway: true, se:'verksamhet', i:'', fi:'toiminta' },
+        { oneway: true, se:'plansch', i:'', fi:'kuvataulu' },
+        { oneway: true, se:'dyka upp', i:'', fi:'ilmaantua' },
+        { oneway: true, se:'finslipa', i:'', fi:'hioa/työstää' },
+        { oneway: true, se:'genomtänkt', i:'', fi:'huolellisesti harkittu' },
+        { oneway: true, se:'utseende', i:'', fi:'ulkonäkö' },
+        { oneway: true, se:'mullig', i:'', fi:'pyöreä' },
+        { oneway: true, se:'röjas', i:'', fi:'paljastua' },
+        { oneway: true, se:'slangbbella', i:'', fi:'ritsa' }
       ],
       opts: {
         order: 'smart'
@@ -795,6 +831,7 @@ var App = {
     console.log('A4:', this.a[3]);
     */
     var i;
+    var usingHint = this.q[0].indexOf('=')!==-1;
     $('#Q').html(this._toHTML(this.q[0]));
     if (this.a[0].length===0) {
       for (i=0; i!=this.qpp; ++i) {
@@ -803,7 +840,11 @@ var App = {
       $('#skip').text('< restart >');
     } else {
       for (i=0; i!=this.qpp; ++i) {
-        $('#A'+(i+1)).html(this._toHTML(this.a[i])); //.text(this.a[i].replace(/=/g, '')); //
+        if (usingHint) {
+          $('#A'+(i+1)).html(this._toHTML(this.a[i]));
+        } else {
+          $('#A'+(i+1)).text(this.a[i].replace(/=/g, ''));
+        }
         $('#A'+(i+1)).show();
         $('#answers').css('visibility', 'hidden');
       }
@@ -821,7 +862,7 @@ var App = {
 
   _answer: function(choice) {
     var _this = this;
-    console.log(choice);
+    //console.log(choice);
     if (choice===0) {
       if ($('#skip').text() !== '< skip >') {
         this.init();
@@ -833,25 +874,32 @@ var App = {
           this.idx = _.shuffle(this.idx);
         }
         this.num--;
-        this._next();
-        this._show();
+        setTimeout(function(){
+          _this._next();
+          _this._show();
+        }, 0);
       }
     } else {
       // check if the answer was correct
-      var q, a;
+      var q, a, nfo;
       switch (this.last.side) {
         case 0:
           q = this.db[this.last.idx].se;
           q = q.split(',');
+          nfo = this.db[this.last.idx].i;
           a = this.db[this.last.idx].fi;
           a = a.split(',');
           break;
         case 1:
           q = this.db[this.last.idx].fi;
           q = q.split(',');
+          nfo = '';
           a = this.db[this.last.idx].se;
           a = a.split(',');
           break;
+      }
+      if (nfo) {
+        $('#Q').html(this._toHTML(nfo + ' ' + q));
       }
       if (this.a[choice-1]===a[0].trim()) {
         // correct answer
@@ -954,7 +1002,7 @@ var App = {
 
     // build database
     if (!this.dbname) {
-      this.dbname = 'T1';
+      this.dbname = 'T3';
     }
 
     this._addWordsToDB(this.data[this.dbname]);
