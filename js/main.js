@@ -653,6 +653,36 @@ var App = {
         order: 'smart'
       }
     },
+    'oneway': {
+      words: [
+        { oneway: true, se:'sikta', i:'', fi:'tähdätä' },
+        { oneway: true, se:'nedladda', i:'', fi:'imuroida (atk)' },
+        { oneway: true, se:'inhemsk', i:'', fi:'kotimainen' },
+        { oneway: true, se:'överraska', i:'', fi:'yllättää' },
+        { oneway: true, se:'räcka', i:'', fi:'riittää' },
+        { oneway: true, se:'skapa', i:'', fi:'luoda' },
+        { oneway: true, se:'envist', i:'', fi:'itsepäisesti' },
+        { oneway: true, se:'kvar', i:'', fi:'jäljellä/tallella' },
+        { oneway: true, se:'sällsynt', i:'', fi:'harvinainen' },
+        { oneway: true, se:'modefluga', i:'', fi:'muotivillitys' },
+        { oneway: true, se:'ingångssida', i:'', fi:'aloitussivu' },
+        { oneway: true, se:'framgång', i:'', fi:'menestys' },
+        { oneway: true, se:'inneha', i:'', fi:'hallita/omistaa' },
+        { oneway: true, se:'ansvara för ngt', i:'', fi:'vastata jostakin' },
+        { oneway: true, se:'verksamhet', i:'', fi:'toiminta' },
+        { oneway: true, se:'plansch', i:'', fi:'kuvataulu' },
+        { oneway: true, se:'dyka upp', i:'', fi:'ilmaantua' },
+        { oneway: true, se:'finslipa', i:'', fi:'hioa/työstää' },
+        { oneway: true, se:'genomtänkt', i:'', fi:'huolellisesti harkittu' },
+        { oneway: true, se:'utseende', i:'', fi:'ulkonäkö' },
+        { oneway: true, se:'mullig', i:'', fi:'pyöreä' },
+        { oneway: true, se:'röjas', i:'', fi:'paljastua' },
+        { oneway: true, se:'slangbbella', i:'', fi:'ritsa' }
+      ],
+      opts: {
+        order: 'smart'
+      }
+    },
     'test': {
       words: [
         { se:'1', i:'', fi:'yksi' },
@@ -702,7 +732,8 @@ var App = {
       var o = {
         se: v.se,
         i: v.i,
-        fi: v.fi
+        fi: v.fi,
+        oneway: v.oneway
       };
       _this.db.push(o);
     });
@@ -711,14 +742,24 @@ var App = {
   _createIndexFromDB: function() {
     // create index of db
     for (var i=this.db.length-1; i>=0; --i){
-      this.idx.push({
-        idx: i,
-        side: 0,
-      });
-      this.idx.push({
-        idx: i,
-        side: 1,
-      });
+      if (_.has(this.db[i], 'oneway') && this.db[i].oneway===true ) {
+        this.idx.push({
+          idx: i,
+          side: 0,
+          oneway: true
+        });
+      } else {
+        this.idx.push({
+          idx: i,
+          side: 0,
+          oneway: false
+        });
+        this.idx.push({
+          idx: i,
+          side: 1,
+          oneway: false
+        });
+      }
     }
     this.total = this.idx.length;
   },
@@ -925,13 +966,17 @@ var App = {
         // skip, add currect question two times back to the index
         this.idx.push(this.last);
         var last = _.clone(this.last, true);
-        last.side = last.side===0?1:0;
-        this.idx.push(last);
+        if (last.oneway!==true) {
+          last.side = last.side===0?1:0;
+          this.idx.push(last);
+          this.total+=2;
+        } else {
+          this.total++;
+        }
         // and shuffle again (if required)
         if (this.order!=='linear') {
           this.idx = _.shuffle(this.idx);
         }
-        this.total+=2;
         $('#A'+choice).removeClass("btn-default");
         $('#A'+choice).addClass("btn-danger");
         setTimeout(function(){
