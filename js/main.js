@@ -810,7 +810,7 @@ var App = {
     opts: {
     order: 'smart'
     }
-  }
+  },
   'oneway': {
     words: [
     { oneway: true, se:'sikta', i:'', fi:'tähdätä' },
